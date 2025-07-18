@@ -1,0 +1,131 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-health"
+version = "0.1.0"
+description = "AI Productivity Analysis for Medical Fees in Japan"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+keywords = ["healthcare", "ai", "japan", "productivity", "analysis", "medical", "economics"]
+authors = [
+    {name = "Tatsuru Kikuchi", email = "tatsuru.kikuchi@example.com"}
+]
+maintainers = [
+    {name = "Tatsuru Kikuchi", email = "tatsuru.kikuchi@example.com"}
+]
+
+dependencies = [
+    "pandas>=1.5.0",
+    "numpy>=1.24.0",
+    "matplotlib>=3.6.0",
+    "seaborn>=0.12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=22.0.0",
+    "flake8>=5.0.0",
+    "mypy>=1.0.0",
+    "isort>=5.0.0",
+]
+interactive = [
+    "jupyter>=1.0.0",
+    "ipywidgets>=8.0.0",
+    "plotly>=5.15.0",
+]
+excel = [
+    "openpyxl>=3.1.0",
+    "xlsxwriter>=3.0.0",
+]
+all = [
+    "mcp-health[dev,interactive,excel]"
+]
+
+[project.urls]
+Homepage = "https://github.com/Tatsuru-Kikuchi/mcp-health-python"
+Documentation = "https://github.com/Tatsuru-Kikuchi/mcp-health-python#readme"
+Repository = "https://github.com/Tatsuru-Kikuchi/mcp-health-python.git"
+"Bug Tracker" = "https://github.com/Tatsuru-Kikuchi/mcp-health-python/issues"
+"Original Dashboard" = "https://tatsuru-kikuchi.github.io/MCP-health/"
+
+[project.scripts]
+mcp-health = "mcp_health.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mcp_health*"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+mcp_health = [
+    "data/*.csv",
+    "data/*.json",
+    "utils/*.json",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+  | foo.py
+)
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers"
+testpaths = [
+    "tests",
+]
+python_files = [
+    "test_*.py",
+    "*_test.py",
+]
+python_classes = [
+    "Test*",
+]
+python_functions = [
+    "test_*",
+]
