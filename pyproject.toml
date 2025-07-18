@@ -24,10 +24,10 @@ classifiers = [
 ]
 keywords = ["healthcare", "ai", "japan", "productivity", "analysis", "medical", "economics"]
 authors = [
-    {name = "Tatsuru Kikuchi", email = "tatsuru.kikuchi@example.com"}
+    {name = "Tatsuru Kikuchi", email = "tatsuru.kikuchi@gmail.com"}
 ]
 maintainers = [
-    {name = "Tatsuru Kikuchi", email = "tatsuru.kikuchi@example.com"}
+    {name = "Tatsuru Kikuchi", email = "tatsuru.kikuchi@gmail.com"}
 ]
 
 dependencies = [
